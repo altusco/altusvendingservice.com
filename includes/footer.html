@@ -1,0 +1,22 @@
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; <span id="year"></span> Altus Vending Service</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  
+  // Set active navigation state
+  const currentPage = window.location.pathname;
+  const navLinks = document.querySelectorAll('.nav-links a');
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === currentPage || 
+        (currentPage === '/' && link.getAttribute('href') === '/') ||
+        (currentPage === '/service.html' && link.getAttribute('href') === '/service.html')) {
+      link.classList.add('active');
+    }
+  });
+</script>

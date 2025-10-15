@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Altus Vending Service | Puget Sound Vending</title>
+  <meta name="description" content="Full-service vending for offices, warehouses, and schools across Bothell, Edmonds, Everett, Lynnwood, Shoreline, and Woodinville." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Proudly Serving Vending Services</h1>
+        <p class="subtitle">Reliable, modern vending for workplaces and facilities across the North Puget Sound.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#contact">Contact Us Today</a>
+          <a class="btn ghost" href="/vending-machine.html">How It Works</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="areas">
+      <div class="container">
+        <h2>Proudly Serving These Areas</h2>
+        <ul class="chip-list">
+          <li>Bothell</li>
+          <li>Edmonds</li>
+          <li>Everett</li>
+          <li>Lynnwood</li>
+          <li>Shoreline</li>
+          <li>Woodinville</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container grid-3">
+        <div class="card">
+          <h3>Full-Service</h3>
+          <p>We deliver, install, stock, and maintain vending machines at no upfront cost for qualifying locations.</p>
+        </div>
+        <div class="card">
+          <h3>Modern Payments</h3>
+          <p>Cashless-ready: tap, chip, and mobile wallet options for fast, hygienic checkout.</p>
+        </div>
+        <div class="card">
+          <h3>Customized Selection</h3>
+          <p>Snacks, drinks, and better-for-you choices tailored to your team’s preferences.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="card">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:info@altusvendingservice.com">info@altusvendingservice.com</a></p>
+        <p>Phone: <a href="tel:+14252245381">(425) 224 - 5381</a></p>
+        <p>Tell us about your location (employee count, hours, and preferred snacks) and we’ll get right back to you.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Load navigation
+    fetch('/includes/nav.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('nav-placeholder').innerHTML = data;
+        setActiveNav();
+      });
+
+    // Load footer
+    fetch('/includes/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+        document.getElementById('year').textContent = new Date().getFullYear();
+      });
+
+    // Set active navigation state
+    function setActiveNav() {
+      const currentPage = window.location.pathname;
+      const navLinks = document.querySelectorAll('.nav-links a');
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === currentPage || 
+            (currentPage === '/' && link.getAttribute('href') === '/') ||
+            (currentPage === '/service.html' && link.getAttribute('href') === '/service.html')) {
+          link.classList.add('active');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+

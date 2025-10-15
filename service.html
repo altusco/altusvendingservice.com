@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vending Machine | Altus Vending Service</title>
+  <meta name="description" content="Learn how our vending machines work, what’s included, and how we keep them stocked and maintained." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>How Our Vending Service Work</h1>
+        <p class="subtitle">A straightforward, full-service program built for convenience.</p>
+      </div>
+    </section>
+
+    <section class="container content">
+      <article class="prose">
+        <h2>What’s Included</h2>
+        <ul>
+          <li>Delivery and installation of modern high-quality vending machines</li>
+          <li>Regular stocking based on actual sales and preferences</li>
+          <li>Cashless payments: tap, chip, mobile wallet, and cash support</li>
+          <li>Maintenance and service — we handle repairs and uptime</li>
+        </ul>
+
+        <h2>Placement Requirements</h2>
+        <p>Most workplaces with steady foot traffic qualify. We recommend a visible, accessible spot near breakrooms or common areas with a standard 120V outlet.</p>
+
+        <h2>Product Selection</h2>
+        <p>Choose from classic favorites and better-for-you options. We’ll refine the mix based on what your team actually buys.</p>
+
+        <h2>Service Frequency</h2>
+        <p>We restock based on usage. Higher-traffic locations receive more frequent visits to keep shelves full.</p>
+
+        <h2>Getting Started</h2>
+        <ol>
+          <li>Contact us with your location details</li>
+          <li>We confirm placement and product mix</li>
+          <li>We install, stock, and monitor performance</li>
+        </ol>
+
+        <p><a class="btn primary" href="/#contact">Request Service</a></p>
+      </article>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Load navigation
+    fetch('/includes/nav.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('nav-placeholder').innerHTML = data;
+        setActiveNav();
+      });
+
+    // Load footer
+    fetch('/includes/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+        document.getElementById('year').textContent = new Date().getFullYear();
+      });
+
+    // Set active navigation state
+    function setActiveNav() {
+      const currentPage = window.location.pathname;
+      const navLinks = document.querySelectorAll('.nav-links a');
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === currentPage || 
+            (currentPage === '/' && link.getAttribute('href') === '/') ||
+            (currentPage === '/service.html' && link.getAttribute('href') === '/service.html')) {
+          link.classList.add('active');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
